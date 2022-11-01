@@ -1,0 +1,21 @@
+{
+  "NTProvider": {
+    "types": {
+      "/FMSInfo": "FMSInfo",
+      "/SmartDashboard/Auto choices": "String Chooser",
+      "/SmartDashboard/Field": "Field2d"
+    },
+    "windows": {
+      "/SmartDashboard/Field": {
+        "trajectory": {
+          "length": 1.0,
+          "weight": 1.0,
+          "width": 0.10000000149011612
+        },
+        "window": {
+          "visible": true
+        }
+      }
+    }
+  }
+}
