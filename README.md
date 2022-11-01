@@ -43,10 +43,6 @@ Having some code that describes our physical robot is great, but for the simulat
 The field's there but where's the robot?! To make the robot show up we need to add the following code to our `Robot.java` file:
 
 ```java
-
-```
-
-```java
 private final Field2d field = new Field2d();
 
 public void robotInit() {
