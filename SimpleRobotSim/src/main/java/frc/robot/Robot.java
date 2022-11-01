@@ -8,37 +8,36 @@ import edu.wpi.first.wpilibj.TimedRobot;
 
 public class Robot extends TimedRobot {
 
+    @Override
+    public void robotInit() {
 
-  @Override
-  public void robotInit() {
-   
-  }
-
-  @Override
-  public void robotPeriodic() {
-    if (this.isDisabled()) {
-      return;
     }
 
-    if (isSimulation()) {
-      Sim.update();
-    } else {
-      Real.update();
+    @Override
+    public void robotPeriodic() {
+        if (this.isDisabled()) {
+            return;
+        }
+
+        if (isSimulation()) {
+            Sim.update();
+        } else {
+            Real.update();
+        }
     }
-  }
 
-  @Override
-  public void autonomousInit() {
-   
-  }
+    @Override
+    public void autonomousInit() {
 
-  @Override
-  public void autonomousPeriodic() {
-    
-  }
+    }
 
-  @Override
-  public void teleopPeriodic() {
-  
-  }
+    @Override
+    public void autonomousPeriodic() {
+
+    }
+
+    @Override
+    public void teleopPeriodic() {
+
+    }
 }

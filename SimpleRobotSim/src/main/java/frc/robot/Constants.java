@@ -1,11 +1,11 @@
 package frc.robot;
 
-public class Constants {
-    public static final double WHEEL_RADIUS = 0.0508; // meters
-    public static final int ENCODER_RESOLUTION = 4096;
+import edu.wpi.first.math.util.Units;
 
-    public static final String GO_FORWARD_AUTO = "Go Forward";
-    public static final String TRAVEL_PATH_AUTO = "Travel Path";
+public class Constants {
+    public static final double WHEEL_RADIUS = Units.inchesToMeters(3);
+    public static final double GEAR_REDUCTION = 7.29;
+    public static final double TRACK_WIDTH = Units.inchesToMeters(28);
 
     public static final double KvLinear = 1.98;
     public static final double KaLinear = 0.2;
