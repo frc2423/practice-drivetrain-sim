@@ -4,14 +4,16 @@
 
 package frc.robot;
 
+import edu.wpi.first.math.geometry.Rotation2d;
+import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot {
 
-     private Field2d field = new Field2d();
-
+    private Field2d field = new Field2d();
+    private final DifferentialDriveOdometry odometry = new DifferentialDriveOdometry(new Rotation2d());
 
     @Override
     public void robotInit() {
@@ -29,6 +31,12 @@ public class Robot extends TimedRobot {
         } else {
             Real.update();
         }
+
+        odometry.update(Rotation2d.fromDegrees(-RobotState.angle),
+                RobotState.leftDistance,
+                RobotState.rightDistance);
+
+        field.setRobotPose(odometry.getPoseMeters());
     }
 
     @Override
