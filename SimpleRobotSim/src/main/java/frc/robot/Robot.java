@@ -6,7 +6,9 @@ package frc.robot;
 
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.DifferentialDriveOdometry;
+import edu.wpi.first.wpilibj.RobotController;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -14,6 +16,7 @@ public class Robot extends TimedRobot {
 
     private Field2d field = new Field2d();
     private final DifferentialDriveOdometry odometry = new DifferentialDriveOdometry(new Rotation2d());
+    private XboxController controller = new XboxController(0);
 
     @Override
     public void robotInit() {
@@ -51,6 +54,7 @@ public class Robot extends TimedRobot {
 
     @Override
     public void teleopPeriodic() {
-
+        RobotState.leftMotorVoltage = -controller.getLeftY() * RobotController.getInputVoltage();
+        RobotState.rightMotorVoltage = -controller.getRightY() * RobotController.getInputVoltage();
     }
 }
