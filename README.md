@@ -38,3 +38,30 @@ Once you have identified the inputs update the `Sim.update` method so it does th
 
 Having some code that describes our physical robot is great, but for the simulation to be useful we really need to see it changing on the screen. Run the simulator. You should see something like this:
 
+![](./images/sim-no-field-robot.png)
+
+The field's there but where's the robot?! To make the robot show up we need to add the following code to our `Robot.java` file:
+
+```java
+
+```
+
+```java
+private final Field2d field = new Field2d();
+
+public void robotInit() {
+  ...
+  SmartDashboard.putData("Field", field);
+}
+...
+
+We also need to keep track of our robot's position and update it in the field. We do that by create an odometry object for our differential drivetrain. More information on this can be found here: https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/differential-drive-odometry.html?highlight=odometry
+
+We can then update the field2d robot in the sim by periodically calling this line:
+
+```java
+field.setRobotPose(odometry.getPoseMeters());
+```
+
+
+https://docs.wpilib.org/en/stable/docs/software/dashboards/glass/field2d-widget.html
