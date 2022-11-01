@@ -5,12 +5,17 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.smartdashboard.Field2d;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Robot extends TimedRobot {
 
+     private Field2d field = new Field2d();
+
+
     @Override
     public void robotInit() {
-
+        SmartDashboard.putData("Field", field);
     }
 
     @Override
