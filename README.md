@@ -71,9 +71,40 @@ https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/wpilibj/X
 
 Information on tank drive and other drive modes can be found here: https://docs.wpilib.org/en/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html?highlight=tank%20drive#drive-modes
 
+Remember the inputs that are needed to change the drivetrain's state! The input variables are the things you need to change in order to make your robot move.
+
 ## Step 5
 
-Now let's create a simulated autonomous mode. Create an autonomous mode where the robot moves forward 10 feet and then stops. A few things to note:
+Now let's create a simulated autonomous mode. Create an autonomous mode where the robot moves forward 10 feet and then stops. The WPILib classes and our state variables uses meters, so we will have to convert from feet to meters. You'll want to use the `Units` class to do those conversions: https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/util/Units.html
 
-- The WPILib classes and our state variables uses meters, so we will have to convert from feet to meters. You'll want to use the `Units` class to do those conversions: https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/util/Units.html
-- Remember the inputs that are needed to change the drivetrain's state! The input variables are the things you need to change in order to make your robot move.
+## Step 6
+
+Now let's create a second autonomous mode where the robot rotates in place for 5 seconds then stops. We want to be able to choose between different auto modes, so don't remove your auto mode code from step 5! We can select different auto modes by creating a `SendableChooser` in our `Robot.java` file:
+
+```java
+  // Create the sendable chooser
+  private final SendableChooser<String> autoChooser = new SendableChooser<>();
+  
+  @Override
+  public void robotInit() {
+    ...
+    // Set the default auto
+    autoChooser.setDefaultOption("Auto 1", "Auto 1");
+    // Add additional auto modes
+    autoChooser.addOption("Auto 2", "Auto 2");
+    SmartDashboard.putData("Auto choices", autoChooser);
+  }
+  
+   @Override
+  public void autonomousPeriodic() {
+    var selected = autoChooser.getSelected();
+    if (selected.equals("Auto 1")) {
+      ...
+    } else if (selected.equals("Auto 2")) {
+      ...
+    }
+  }
+```
+
+
+
