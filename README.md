@@ -106,5 +106,10 @@ Now let's create a second autonomous mode where the robot rotates in place for 5
   }
 ```
 
+We can change the auto mode while running the robot code using the `Sendable Chooser Widget` in `Glass`: https://docs.wpilib.org/en/stable/docs/software/dashboards/glass/widgets.html?highlight=sendable%20chooser#sendable-chooser-widget
 
+## Step 7
 
+Knowing how to manually tell our robot to move forward distances and rotate is great, but during competitions its far faster to get to different places on the field using `trajectories`. An explanation on trajectories can be found here: https://docs.wpilib.org/en/stable/docs/software/pathplanning/trajectory-tutorial/trajectory-tutorial-overview.html#why-trajectory-following
+
+To learn how to generate trajectories follow this guide here: https://docs.wpilib.org/en/stable/docs/software/advanced-controls/trajectories/trajectory-generation.html
