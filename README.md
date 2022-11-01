@@ -53,11 +53,27 @@ public void robotInit() {
 
 We also need to keep track of our robot's position and update it in the field. We do that by create an odometry object for our differential drivetrain. More information on this can be found here: https://docs.wpilib.org/en/stable/docs/software/kinematics-and-odometry/differential-drive-odometry.html?highlight=odometry
 
-We can then update the field2d robot in the sim by periodically calling this line:
+We can then update the field2d robot in the sim by periodically calling the `odometry.update` method and then passing in the current robot pose into the field object:
 
 ```java
 field.setRobotPose(odometry.getPoseMeters());
 ```
 
+More Information on the field2d widget can be found here: https://docs.wpilib.org/en/stable/docs/software/dashboards/glass/field2d-widget.html
 
-https://docs.wpilib.org/en/stable/docs/software/dashboards/glass/field2d-widget.html
+## Step 4
+
+Let's now make the robot actually move in the simulator! Let's make it move using an Xbox Controller during the teleop period using tank drive.
+
+Information on the XboxController class can be found here:
+https://docs.wpilib.org/en/stable/docs/software/basic-programming/joystick.html?highlight=xbox%20controller#xboxcontroller-class
+https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/wpilibj/XboxController.html
+
+Information on tank drive and other drive modes can be found here: https://docs.wpilib.org/en/stable/docs/software/hardware-apis/motors/wpi-drive-classes.html?highlight=tank%20drive#drive-modes
+
+## Step 5
+
+Now let's create a simulated autonomous mode. Create an autonomous mode where the robot moves forward 10 feet and then stops. A few things to note:
+
+- The WPILib classes and our state variables uses meters, so we will have to convert from feet to meters. You'll want to use the `Units` class to do those conversions: https://first.wpi.edu/wpilib/allwpilib/docs/release/java/edu/wpi/first/math/util/Units.html
+- Remember the inputs that are needed to change the drivetrain's state! The input variables are the things you need to change in order to make your robot move.
