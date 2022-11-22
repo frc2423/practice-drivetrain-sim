@@ -25,7 +25,13 @@ public class Sim {
 
     public static void update() {
         // Update sim drivetrain
-
+        driveSim.setInputs(RobotState.leftMotorVoltage, RobotState.rightMotorVoltage);
+        driveSim.update(0.02);
         // Get drivetrain state from sim drivetrain
+        RobotState.leftDistance = driveSim.getLeftPositionMeters();
+        RobotState.rightDistance = driveSim.getRightPositionMeters();
+        RobotState.leftVelocity = driveSim.getLeftVelocityMetersPerSecond();
+        RobotState.rightVelocity = driveSim.getRightVelocityMetersPerSecond();
+        RobotState.angle = -driveSim.getHeading().getDegrees();
     }
 }
